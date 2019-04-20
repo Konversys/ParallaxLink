@@ -14,10 +14,24 @@ namespace ParallaxLink.Controllers
     {
         // GET api/directions
         [HttpGet]
-        public ActionResult<IEnumerable<TrainDirection>> Get()
+        [HttpGet("generic")]
+        public ActionResult<IEnumerable<TrainDirection>> GetDirections()
         {
-            var result = DirectionController.GetDirections();
-            return result;
+            return DirectionController.GetDirections();
+        }
+
+        [HttpGet("checksum")]
+        public ActionResult<int> GetChecksum()
+        {
+            var result = DirectionController.GetCheckSUMDirections();
+            if (result == null)
+            {
+                return -1;
+            }
+            else
+            {
+                return result;
+            }
         }
     }
 }
