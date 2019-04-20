@@ -19,7 +19,7 @@ namespace ParallaxLink.TrainDatabase
             }
             catch
             {
-                return null;
+                return new List<TrainDirection>();
             }
         }
     }

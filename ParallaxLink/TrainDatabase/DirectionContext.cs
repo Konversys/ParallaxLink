@@ -11,7 +11,7 @@ namespace ParallaxLink.TrainDatabase
     {
         public DbSet<TrainDirection> Directions { get; set; }
 
-        const string CONNECTION_STRING_MSSQL = @"Server=localhost\SQLEXPRESS;Database=myDataBase;User Id = plx_user;Password=LtgFoKem;";
+        const string CONNECTION_STRING_MSSQL = @"data source=176.119.156.25;initial catalog=parallax;persist security info=True;user id=plx_app;password=LtgFoKem;";
 
         public DirectionContext() : base()
         {

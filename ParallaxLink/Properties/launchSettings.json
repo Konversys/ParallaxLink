@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "parallax",
+      "launchUrl": "api/directions",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "ParallaxLink": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "parallax",
+      "launchUrl": "api/directions",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

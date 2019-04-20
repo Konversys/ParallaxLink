@@ -8,15 +8,16 @@ using ParallaxLink.TrainDatabase.Model;
 
 namespace ParallaxLink.Controllers
 {
-    [Route("")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ParallaxController : ControllerBase
+    public class DirectionsController : ControllerBase
     {
-        // GET api/values
+        // GET api/directions
         [HttpGet]
         public ActionResult<IEnumerable<TrainDirection>> Get()
         {
-            return DirectionController.GetDirections();
+            var result = DirectionController.GetDirections();
+            return result;
         }
     }
 }
