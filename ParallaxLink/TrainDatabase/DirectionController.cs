@@ -8,7 +8,7 @@ namespace ParallaxLink.TrainDatabase
 {
     public class DirectionController
     {
-        public static List<TrainDirection> GetDirections()
+        public static List<Direction> GetDirections()
         {
             try
             {
@@ -17,38 +17,24 @@ namespace ParallaxLink.TrainDatabase
                     return context.Directions.ToList();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return new List<TrainDirection>();
+                string f = e.Message;
+                return null;
             }
         }
 
-        public static int? GetCheckSUMDirections()
+        public static long? GetCheckSUMDirections()
         {
             try
             {
-                using (var context = new DirectionContext())
+                using (DirectionContext context = new DirectionContext())
                 {
-                    using (var command = context.Database.GetDbConnection().CreateCommand())
-                    {
-                        command.CommandText = "SELECT CHECKSUM_AGG(BINARY_CHECKSUM([value], name, from_, to_)) as checksum FROM Directions";
-                        context.Database.OpenConnection();
-                        using (var reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                reader.Read();
-                                return reader.GetInt32(0);
-                            }
-                            else
-                            {
-                                return null;
-                            }
-                        }
-                    }
+                    long checksum = context.Checksums.FromSql("CHECKSUM TABLE Directions").AsNoTracking().FirstOrDefault().Hash;
+                    return checksum;
                 }
             }
-            catch (Exception e)
+            catch
             {
                 return null;
             }

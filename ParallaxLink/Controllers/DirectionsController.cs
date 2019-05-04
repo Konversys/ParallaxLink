@@ -14,24 +14,24 @@ namespace ParallaxLink.Controllers
     {
         // GET api/directions
         [HttpGet]
-        [HttpGet("generic")]
-        public ActionResult<IEnumerable<TrainDirection>> GetDirections()
+        [HttpGet("all")]
+        public ActionResult<IEnumerable<DirectionShort>> GetDirections()
         {
-            return DirectionController.GetDirections();
+            return DirectionController.GetDirections().ConvertAll(new Converter<Direction, DirectionShort>(DirectionShort.Convert));
         }
 
-        [HttpGet("checksum")]
-        public ActionResult<int> GetChecksum()
+        // GET api/directions/valid
+        [HttpGet("valid")]
+        public ActionResult<IEnumerable<DirectionShort>> GetValidDirections()
         {
-            var result = DirectionController.GetCheckSUMDirections();
-            if (result == null)
-            {
-                return -1;
-            }
-            else
-            {
-                return result;
-            }
+            return DirectionController.GetDirections().Where(x => x.From != null && x.To != null).ToList().ConvertAll(new Converter<Direction, DirectionShort>(DirectionShort.Convert));
+        }
+
+        // GET api/directions/checksum
+        [HttpGet("checksum")]
+        public ActionResult<long?> GetChecksum()
+        {
+            return DirectionController.GetCheckSUMDirections();
         }
     }
 }

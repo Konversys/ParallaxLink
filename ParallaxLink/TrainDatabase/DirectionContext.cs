@@ -9,18 +9,15 @@ namespace ParallaxLink.TrainDatabase
 {
     class DirectionContext : DbContext
     {
-        public DbSet<TrainDirection> Directions { get; set; }
+        const string MYSQL_CONNECTION_STRING = "server=localhost;UserId=plx_reader;Password=LtgFoKem;database=parallax;charset=utf8";
 
-        const string CONNECTION_STRING_MSSQL = @"data source=konverdev.ru;initial catalog=parallax;persist security info=True;user id=plx_app;password=LtgFoKem;";
+        public DbSet<Direction> Directions { get; set; }
 
-        public DirectionContext() : base()
-        {
-            Database.EnsureCreated();
-        }
+        public DbSet<Checksum> Checksums { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(CONNECTION_STRING_MSSQL);
+            optionsBuilder.UseMySQL(MYSQL_CONNECTION_STRING);
         }
     }
 }
