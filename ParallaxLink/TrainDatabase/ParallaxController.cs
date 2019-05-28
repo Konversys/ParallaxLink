@@ -6,13 +6,43 @@ using System;
 
 namespace ParallaxLink.TrainDatabase
 {
-    public class DirectionController
+    public class ParallaxController
     {
+        public static List<Category> GetCategories()
+        {
+            try
+            {
+                using (var context = new ParallaxContext())
+                {
+                    return context.Categories.ToList();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<Product> GetProducts()
+        {
+            try
+            {
+                using (var context = new ParallaxContext())
+                {
+                    return context.Products.ToList();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static List<Direction> GetDirections()
         {
             try
             {
-                using (var context = new DirectionContext())
+                using (var context = new ParallaxContext())
                 {
                     return context.Directions.ToList();
                 }
@@ -28,7 +58,7 @@ namespace ParallaxLink.TrainDatabase
         {
             try
             {
-                using (DirectionContext context = new DirectionContext())
+                using (ParallaxContext context = new ParallaxContext())
                 {
                     long checksum = context.Checksums.FromSql("CHECKSUM TABLE Directions").AsNoTracking().FirstOrDefault().Hash;
                     return checksum;

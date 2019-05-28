@@ -12,26 +12,26 @@ namespace ParallaxLink.Controllers
     [ApiController]
     public class DirectionsController : ControllerBase
     {
-        // GET api/directions
+        // GET api/directions/all
         [HttpGet]
         [HttpGet("all")]
         public ActionResult<IEnumerable<DirectionShort>> GetDirections()
         {
-            return DirectionController.GetDirections().ConvertAll(new Converter<Direction, DirectionShort>(DirectionShort.Convert));
+            return ParallaxController.GetDirections().ConvertAll(new Converter<Direction, DirectionShort>(DirectionShort.Convert));
         }
 
         // GET api/directions/valid
         [HttpGet("valid")]
         public ActionResult<IEnumerable<DirectionShort>> GetValidDirections()
         {
-            return DirectionController.GetDirections().Where(x => x.From != null && x.To != null).ToList().ConvertAll(new Converter<Direction, DirectionShort>(DirectionShort.Convert));
+            return ParallaxController.GetDirections().Where(x => x.From != null && x.To != null).ToList().ConvertAll(new Converter<Direction, DirectionShort>(DirectionShort.Convert));
         }
 
         // GET api/directions/checksum
         [HttpGet("checksum")]
         public ActionResult<long?> GetChecksum()
         {
-            return DirectionController.GetCheckSUMDirections();
+            return ParallaxController.GetCheckSUMDirections();
         }
     }
 }
