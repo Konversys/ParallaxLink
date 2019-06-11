@@ -8,6 +8,21 @@ namespace ParallaxLink.TrainDatabase
 {
     public class ParallaxController
     {
+        public static List<Inventory> GetInventories()
+        {
+            try
+            {
+                using (var context = new ParallaxContext())
+                {
+                    return context.Inventories.ToList();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static List<Category> GetCategories()
         {
             try
@@ -61,6 +76,38 @@ namespace ParallaxLink.TrainDatabase
                 using (ParallaxContext context = new ParallaxContext())
                 {
                     long checksum = context.Checksums.FromSql("CHECKSUM TABLE Directions").AsNoTracking().FirstOrDefault().Hash;
+                    return checksum;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static long? GetCheckSUMItems()
+        {
+            try
+            {
+                using (ParallaxContext context = new ParallaxContext())
+                {
+                    long checksum = context.Checksums.FromSql("CHECKSUM TABLE Items").AsNoTracking().FirstOrDefault().Hash;
+                    return checksum;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static long? GetCheckSUMProducts()
+        {
+            try
+            {
+                using (ParallaxContext context = new ParallaxContext())
+                {
+                    long checksum = context.Checksums.FromSql("CHECKSUM TABLE Products").AsNoTracking().FirstOrDefault().Hash;
                     return checksum;
                 }
             }

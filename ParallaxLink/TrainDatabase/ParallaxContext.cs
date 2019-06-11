@@ -1,16 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ParallaxLink.TrainDatabase.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ParallaxLink.TrainDatabase
 {
     class ParallaxContext : DbContext
     {
         const string MYSQL_CONNECTION_STRING_LOCAL = "server=localhost;UserId=plx_reader;Password=LtgFoKem;database=parallax;charset=utf8";
-        //const string MYSQL_CONNECTION_STRING_REMOTE = "server=konverdev.ru;UserId=konver;Password=1833522;database=parallax;charset=utf8";
+        const string MYSQL_CONNECTION_STRING_REMOTE = "server=konverdev.ru;UserId=konver;Password=1833522;database=parallax;charset=utf8";
 
         public DbSet<Direction> Directions { get; set; }
 
@@ -19,10 +15,11 @@ namespace ParallaxLink.TrainDatabase
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(MYSQL_CONNECTION_STRING_LOCAL);
+            optionsBuilder.UseMySQL(MYSQL_CONNECTION_STRING_REMOTE);
         }
     }
 }

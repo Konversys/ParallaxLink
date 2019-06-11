@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ParallaxLink.TrainDatabase.Model
+﻿namespace ParallaxLink.TrainDatabase.Model
 {
     public class DirectionShort
     {

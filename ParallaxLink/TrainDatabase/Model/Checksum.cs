@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ParallaxLink.TrainDatabase.Model
 {
-    class Checksum
+    public class Checksum
     {
+        public static readonly string PRODUCT = "products";
+        public static readonly string INVENTORY = "inventory";
+        public static readonly string DIRECTION = "direction";
+        public Checksum(string table, long hash)
+        {
+            Table = table;
+            Hash = hash;
+        }
+
         /// <summary>
         /// Таблица
         /// </summary>
