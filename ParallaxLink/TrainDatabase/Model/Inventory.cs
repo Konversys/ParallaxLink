@@ -7,7 +7,9 @@ namespace ParallaxLink.TrainDatabase.Model
     public class Inventory
     {
         [Key]
+        [Column("id")]
+        public int Id { get; set; }
         [Column("title")]
-        public string title;
+        public string Title { get; set; }
     }
 }

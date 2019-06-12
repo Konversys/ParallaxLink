@@ -19,7 +19,7 @@ namespace ParallaxLink.TrainDatabase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(MYSQL_CONNECTION_STRING_REMOTE);
+            optionsBuilder.UseMySQL(MYSQL_CONNECTION_STRING_LOCAL);
         }
     }
 }
