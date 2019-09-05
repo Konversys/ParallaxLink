@@ -20,7 +20,7 @@ namespace ParallaxLink.TrainDatabase.Model
             return GetCategories().Where(x => x.Id == id).FirstOrDefault().Title;
         }
 
-        public ProductShort(string title, double price, string category, string count, string about, string image)
+        public ProductShort(string title, double price, int category, string count, string about, string image)
         {
             Title = title;
             Price = price;
@@ -41,7 +41,7 @@ namespace ParallaxLink.TrainDatabase.Model
         /// <summary>
         /// Категория
         /// </summary>
-        public string Category { get; set; }
+        public int Category { get; set; }
         /// <summary>
         /// Количество
         /// </summary>
@@ -54,10 +54,5 @@ namespace ParallaxLink.TrainDatabase.Model
         /// Изображение
         /// </summary>
         public string Image { get; set; }
-
-        public static ProductShort Convert(Product product)
-        {
-            return new ProductShort(product.Title, product.Price, GetCategoryTitleById(product.CategoryID), product.Count, product.About, product.Image);
-        }
     }
 }

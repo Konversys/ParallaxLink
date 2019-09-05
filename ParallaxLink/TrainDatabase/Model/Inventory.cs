@@ -4,12 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ParallaxLink.TrainDatabase.Model
 {
     [Table("Items")]
-    public class Inventory
+    public class Inventory: InventoryShort
     {
+        public Inventory(string title) : base(title)
+        {
+            Title = title;
+        }
+
         [Key]
         [Column("id")]
         public int Id { get; set; }
-        [Column("title")]
-        public string Title { get; set; }
     }
 }

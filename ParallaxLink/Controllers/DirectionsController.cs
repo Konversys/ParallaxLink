@@ -17,7 +17,7 @@ namespace ParallaxLink.Controllers
         [HttpGet("all")]
         public ActionResult<IEnumerable<DirectionShort>> GetDirections()
         {
-            return ParallaxController.GetDirections().ConvertAll(new Converter<Direction, DirectionShort>(DirectionShort.Convert));
+            return ParallaxController.GetDirections();
         }
 
         // GET api/directions/valid

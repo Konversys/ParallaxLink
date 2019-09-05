@@ -25,10 +25,5 @@
         /// Код станции прибытия
         /// </summary>
         public string To { get; set; }
-
-        public static DirectionShort Convert(Direction direction)
-        {
-            return new DirectionShort(direction.Value, direction.Name, direction.From, direction.To);
-        }
     }
 }

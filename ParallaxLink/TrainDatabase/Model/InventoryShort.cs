@@ -13,9 +13,5 @@ namespace ParallaxLink.TrainDatabase.Model
         }
 
         public string Title { get; set; }
-        public static InventoryShort Convert(Inventory inventory)
-        {
-            return new InventoryShort(inventory.Title);
-        }
     }
 }

@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ParallaxLink.TrainDatabase.Model
 {
     [Table("Products")]
-    public class Product
+    public class Product : ProductShort
     {
         public Product()
         {
         }
 
-        public Product(int id, string title, double price, int categoryId, string count, string about, string image)
+        public Product(int id, string title, double price, int categoryId, string count, string about, string image) : base(title, price, categoryId, count, about, image)
         {
             Id = id;
             Title = title;
@@ -27,32 +27,5 @@ namespace ParallaxLink.TrainDatabase.Model
         /// <summary>
         /// Наименование
         /// </summary>
-        [Column("title")]
-        public string Title { get; set; }
-        /// <summary>
-        /// Цена
-        /// </summary>
-        [Column("price")]
-        public double Price { get; set; }
-        /// <summary>
-        /// Категория
-        /// </summary>
-        [Column("category")]
-        public int CategoryID { get; set; }
-        /// <summary>
-        /// Количество
-        /// </summary>
-        [Column("count")]
-        public string Count { get; set; }
-        /// <summary>
-        /// Подробности
-        /// </summary>
-        [Column("About")]
-        public string About { get; set; }
-        /// <summary>
-        /// Изображение
-        /// </summary>
-        [Column("image")]
-        public string Image { get; set; }
     }
 }

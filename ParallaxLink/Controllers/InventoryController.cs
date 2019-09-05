@@ -15,7 +15,7 @@ namespace ParallaxLink.Controllers
         [HttpGet("all")]
         public ActionResult<IEnumerable<InventoryShort>> GetDirections()
         {
-            return ParallaxController.GetInventories().ConvertAll(new Converter<Inventory, InventoryShort>(InventoryShort.Convert));
+            return ParallaxController.GetInventories();
         }
     }
 }

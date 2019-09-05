@@ -18,7 +18,7 @@ namespace ParallaxLink.Controllers
         [HttpGet("all")]
         public ActionResult<IEnumerable<ProductShort>> GetProducts()
         {
-            return ParallaxController.GetProducts().ConvertAll(new Converter<Product, ProductShort>(ProductShort.Convert));
+            return ParallaxController.GetProducts();
         }
     }
 }
